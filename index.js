@@ -1,3 +1,13 @@
+var Twit = require(‘twit’);
+var TwitterBot = require(‘node-twitterbot’).TwitterBot;
+
+var Bot = new TwitterBot({
+ consumer_key: process.env.BOT_CONSUMER_KEY,
+ consumer_secret: process.env.BOT_CONSUMER_SECRET,
+ access_token: process.env.BOT_ACCESS_TOKEN,
+ access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
+});
+
 var lyrics = ['A', 'man', 'walks', 'down', 'the', 'street',
 'He', 'says', 'why', 'am', 'I', 'soft', 'in', 'the', 'middle', 'now',
 'Why', 'am', 'I', 'soft', 'in', 'the', 'middle',
@@ -64,18 +74,18 @@ var lyrics = ['A', 'man', 'walks', 'down', 'the', 'street',
 "You", "can", "call", "me", "Al",
 "Call", "me", "Al"]
 
-function getNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function getWord(lyrics) {
+    return lyrics[Math.floor(Math.random() * lyrics.length)]
 }
 
-var line1 = lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' / '
+var line1 = getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' / '
 
-var line2 = lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' / '
+var line2 = getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' / '
 
-var line3 = lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' / '
+var line3 = getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' / '
 
-var line4 = lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)] + ' ' + lyrics[getNum(0, 316)]
+var line4 = getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics) + ' ' + getWord(lyrics)
 
 var result = line1 + line2 + line3 + line4
 
-console.log(result.toUpperCase(), result.length)
+Bot.tweet(result.toUpperCase())
