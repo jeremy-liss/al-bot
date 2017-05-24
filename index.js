@@ -53,5 +53,6 @@ var line3 = getOne(one)  + ' ' + getThree(three) + ' ' + getTwo(two) + " / "
 var line4 = getOne(one)  + ' ' + getThree(two) + ' ' + getTwo(three)
 //
  var result = line1 + line2 + line3 + line4
-// Bot.tweet(result.toUpperCase())
-console.log(result.toUpperCase())
+
+Bot.tweet(result.toUpperCase())
+// console.log(result.toUpperCase())
