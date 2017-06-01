@@ -33,26 +33,16 @@ var three = [
   "Cattle", "marketplace", "Scatterlings", "orphanages", "angels", "architecture", "infinity"
 ]
 
-
-function getOne(one) {
-    return one[Math.floor(Math.random() * one.length)]
-}
-function getTwo(two) {
-    return two[Math.floor(Math.random() * two.length)]
-}
-function getThree(three) {
-    return three[Math.floor(Math.random() * three.length)]
+function getWord(array) {
+    return array[Math.floor(Math.random() * array.length)]
 }
 
-var line1 = getOne(one)  + ' ' + getThree(two) + ' ' + getTwo(three) + " / "
+var line1 = getWord(one)  + ' ' + getWord(two) + ' ' + getWord(three) + " / "
+var line2 = getWord(three)  + ' ' + getWord(two) + ' ' + getWord(three) + " / "
+var line3 = getWord(one)  + ' ' + getWord(three) + ' ' + getWord(two) + " / "
+var line4 = getWord(one)  + ' ' + getWord(two) + ' ' + getWord(three)
 
-var line2 = getOne(three)  + ' ' + getThree(two) + ' ' + getTwo(three) + " / "
-
-var line3 = getOne(one)  + ' ' + getThree(three) + ' ' + getTwo(two) + " / "
-
-var line4 = getOne(one)  + ' ' + getThree(two) + ' ' + getTwo(three)
-//
- var result = line1 + line2 + line3 + line4
+var result = line1 + line2 + line3 + line4
 
 Bot.tweet(result.toUpperCase())
 // console.log(result.toUpperCase())
